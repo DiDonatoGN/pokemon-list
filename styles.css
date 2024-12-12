@@ -1,0 +1,54 @@
+body {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    margin: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.card {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #ccc;
+    /*
+    https://getcssscan.com/css-box-shadow-examples
+    ejemplo #15 utilizado abajo
+    */
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    width: 300px;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.card h2 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
