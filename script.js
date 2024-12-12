@@ -1,6 +1,6 @@
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
-const select = document.getElementById('pokemon-select');
-const cardContainer = document.getElementById('pokemon-card');
+const select = document.getElementById('seleccionar-Pokemon');
+const ContenedorTarjeta = document.getElementById('pokemon-tarjeta');
 
 const typeColors = {
     fire: '#fddfdf',
@@ -24,7 +24,7 @@ const typeColors = {
 };
 
 // Cargar la lista de Pokémon
-async function loadPokemonList() {
+async function CargarListaPokemon() {
     const response = await fetch(`${apiUrl}?limit=1000`);
     const data = await response.json();
     select.innerHTML = '<option value="">Selecciona un Pokémon</option>';
@@ -37,9 +37,9 @@ async function loadPokemonList() {
 }
 
 // Mostrar tarjeta del Pokémon seleccionado
-async function displayPokemonCard(url) {
+async function MostrarTarjetaPokemon(url) {
     if (!url) {
-        cardContainer.innerHTML = '';
+        ContenedorTarjeta.innerHTML = '';
         document.body.style.backgroundColor = '';
         document.body.style.color = '';
         return;
@@ -58,8 +58,8 @@ async function displayPokemonCard(url) {
     document.body.style.backgroundColor = bgColor;
     document.body.style.color = primaryType === 'dark' ? '#fff' : '#000';
 
-    cardContainer.innerHTML = `
-        <div class="card">
+    ContenedorTarjeta.innerHTML = `
+        <div class="tarjeta">
             <img src="${data.sprites.other['official-artwork'].front_default}" alt="${data.name}">
             <h2>${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h2>
             <p><strong>Habilidades:</strong></p>
@@ -72,8 +72,8 @@ async function displayPokemonCard(url) {
 
 // Eventos
 select.addEventListener('change', (e) => {
-    displayPokemonCard(e.target.value);
+    MostrarTarjetaPokemon(e.target.value);
 });
 
 // Inicializar
-loadPokemonList();
+CargarListaPokemon();

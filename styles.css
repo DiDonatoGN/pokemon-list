@@ -15,7 +15,7 @@ select {
     border: 1px solid #ccc;
 }
 
-.card {
+.tarjeta {
     margin-top: 20px;
     display: inline-block;
     padding: 20px;
@@ -32,23 +32,23 @@ select {
     transition: transform 0.3s ease;
 }
 
-.card:hover {
+.tarjeta:hover {
     transform: scale(1.05);
 }
 
-.card img {
+.tarjeta img {
     width: 200px;
     height: 200px;
     object-fit: cover;
     border-radius: 15px;
 }
 
-.card h2 {
+.tarjeta h2 {
     margin: 10px 0;
     font-size: 24px;
 }
 
-.card ul {
+.tarjeta ul {
     list-style: none;
     padding: 0;
 }
