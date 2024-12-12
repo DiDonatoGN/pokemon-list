@@ -25,7 +25,7 @@ const typeColors = {
 
 // Cargar la lista de Pokémon
 async function CargarListaPokemon() {
-    const response = await fetch(`${apiUrl}?limit=1000`);
+    const response = await fetch(`${apiUrl}?limit=1302`);
     const data = await response.json();
     select.innerHTML = '<option value="">Selecciona un Pokémon</option>';
     data.results.forEach(pokemon => {
