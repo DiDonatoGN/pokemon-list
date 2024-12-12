@@ -53,10 +53,7 @@ async function MostrarTarjetaPokemon(url) {
     ).join(', ');
 
     const primaryType = data.types[0]?.type?.name;
-    const bgColor = typeColors[primaryType] || '#fff';
-
-    document.body.style.backgroundColor = bgColor;
-    document.body.style.color = primaryType === 'dark' ? '#fff' : '#000';
+    actualizarEstiloFondo(primaryType); // Actualiza el fondo según el modo y tipo
 
     ContenedorTarjeta.innerHTML = `
         <div class="tarjeta">
@@ -70,6 +67,14 @@ async function MostrarTarjetaPokemon(url) {
     `;
 }
 
+// Actualizar el fondo según el modo y el tipo de Pokémon
+function actualizarEstiloFondo(type) {
+    const darkMode = document.body.classList.contains('modo-oscuro');
+    const bgColor = actualizarColorTipos(type);
+    document.body.style.backgroundColor = bgColor;
+    document.body.style.color = darkMode ? '#fff' : '#000';
+}
+
 // Eventos
 select.addEventListener('change', (e) => {
     MostrarTarjetaPokemon(e.target.value);
@@ -77,3 +82,48 @@ select.addEventListener('change', (e) => {
 
 // Inicializar
 CargarListaPokemon();
+
+// Referencia al botón de modo oscuro
+const BotonModoOscuro = document.getElementById('cambiar-modo-oscuro');
+
+// Alternar el modo oscuro
+BotonModoOscuro.addEventListener('click', () => {
+    document.body.classList.toggle('modo-oscuro');
+
+    // Cambiar texto del botón
+    BotonModoOscuro.textContent = 
+        document.body.classList.contains('modo-oscuro') ? 'Modo Claro' : 'Modo Oscuro';
+
+    // Actualizar el fondo si ya hay un Pokémon seleccionado
+    const urlSeleccionada = select.value;
+    if (urlSeleccionada) {
+        MostrarTarjetaPokemon(urlSeleccionada);
+    }
+});
+
+// Actualiza los colores del tipo según el modo
+function actualizarColorTipos(type) {
+    const darkMode = document.body.classList.contains('modo-oscuro');
+    const typeColorsDark = {
+        fire: '#a84040',
+        water: '#2b78c8',
+        grass: '#3d8050',
+        electric: '#a79420',
+        psychic: '#8a8a40',
+        ice: '#60a0b0',
+        dragon: '#4b5a80',
+        dark: '#404040',
+        fairy: '#a05080',
+        normal: '#808080',
+        fighting: '#9e4200',
+        flying: '#303138',
+        poison: '#2b0040',
+        ground: '#603000',
+        rock: '#343434',
+        bug: '#3b5b00',
+        ghost: '#22004e',
+        steel: '#5f5f5f'
+    };
+
+    return darkMode ? typeColorsDark[type] || '#444' : typeColors[type] || '#fff';
+}

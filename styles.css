@@ -1,9 +1,10 @@
-*{
+* {
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 }
+
 body {
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
@@ -58,3 +59,38 @@ select {
     list-style: none;
     padding: 0;
 }
+
+/*
+MODO OSCURO
+*/
+body.modo-oscuro {
+    background-color: #121212;
+    color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.modo-oscuro select {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    border-color: #333;
+}
+
+body.modo-oscuro .tarjeta {
+    background-color: #1f1f1f;
+    border-color: #333;
+    color: #ffffff;
+}
+
+/* Tipos más oscuros en modo oscuro */
+body.modo-oscuro .tarjeta {
+    --darken-factor: 0.3;
+}
+
+body.modo-oscuro .tarjeta[data-type='fire'] {
+    background-color: rgba(255, 95, 95, 0.8);
+}
+
+body.modo-oscuro .tarjeta[data-type='water'] {
+    background-color: rgba(95, 185, 255, 0.8);
+}
+
